@@ -26,6 +26,7 @@ set noswapfile            " disable creating swap file
 
 call plug#begin()
 Plug 'gruvbox-community/gruvbox'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 Plug 'prettier/vim-prettier'
@@ -40,7 +41,8 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme onehalfdark
 
 " Mapping
 let mapleader = ","
@@ -96,5 +98,4 @@ lua << EOF
   require('telescope').load_extension('fzf')
   require('telescope').load_extension('projects')
 EOF
-
 
