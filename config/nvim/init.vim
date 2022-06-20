@@ -32,6 +32,7 @@ Plug 'elzr/vim-json'
 Plug 'prettier/vim-prettier'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'ThePrimeagen/harpoon'
 Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
 Plug 'ahmedkhalf/project.nvim'
 Plug 'editorconfig/editorconfig-vim'
@@ -39,6 +40,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " colorscheme gruvbox
@@ -58,6 +60,15 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+" Harpoon configuration
+nnoremap <silent><leader>a :lua require('harpoon.mark').add_file()<cr>
+nnoremap <silent><C-e> :lua require('harpoon.ui').toggle_quick_menu()<cr>
+nnoremap <leader>1 :lua require('harpoon.ui').nav_file(1)<cr>
+nnoremap <leader>2 :lua require('harpoon.ui').nav_file(2)<cr>
+nnoremap <leader>3 :lua require('harpoon.ui').nav_file(3)<cr>
+nnoremap <leader>4 :lua require('harpoon.ui').nav_file(4)<cr>
+nnoremap <leader>5 :lua require('harpoon.ui').nav_file(5)<cr>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -97,5 +108,6 @@ lua << EOF
 
   require('telescope').load_extension('fzf')
   require('telescope').load_extension('projects')
+  require('telescope').load_extension('harpoon')
 EOF
 
