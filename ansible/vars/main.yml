@@ -1,0 +1,8 @@
+---
+zsh_ohmy_custom_plugins:
+  - name: "zsh-completions"
+    repo: "https://github.com/zsh-users/zsh-completions"
+  - name: "fzf-tab-completion"
+    repo: "https://github.com/lincheney/fzf-tab-completion.git"
+
+nvim_version: 0.8

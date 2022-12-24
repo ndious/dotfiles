@@ -1,0 +1,8 @@
+- name: Install packages
+  become: true
+  apt:
+    name: [ "tmux", "fzf", "flameshot", "ripgrep" ]
+  tags:
+    - install
+    - apps
+
