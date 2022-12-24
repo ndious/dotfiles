@@ -1,7 +1,14 @@
-local telescope = require "telescope"
+local status, telescope = pcall(require, "telescope")
+if (not status) then
+    print "Error Telescope"
+    return
+end
+
 local actions = require "telescope.actions"
 local sorters = require "telescope.sorters"
 local previewers = require "telescope.previewers"
+
+print "telescope.cnf"
 
 telescope.setup({
 	defaults = {
