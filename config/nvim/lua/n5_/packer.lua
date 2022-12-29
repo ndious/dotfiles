@@ -4,7 +4,6 @@ if (not status) then
     print "Packer is not installed"
     return
 end
-print "Packer.cnf"
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]

@@ -5,15 +5,12 @@ if (not status) then
     return
 end
 
-print "lsp.cnf"
-
 lsp.preset("recommended")
 
 lsp.ensure_installed({
     'tsserver',
     'eslint',
     'sumneko_lua',
-    'solargraph',
     'cssls',
     'rust_analyzer',
     'gopls',

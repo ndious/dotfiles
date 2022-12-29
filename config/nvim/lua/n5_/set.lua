@@ -1,5 +1,3 @@
-print "vim-set.cnf"
-
 vim.opt.guicursor = ""
 
 vim.opt.nu = true

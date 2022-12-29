@@ -8,8 +8,6 @@ local actions = require "telescope.actions"
 local sorters = require "telescope.sorters"
 local previewers = require "telescope.previewers"
 
-print "telescope.cnf"
-
 telescope.setup({
 	defaults = {
 		file_sorter = sorters.get_fzy_sorter,

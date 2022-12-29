@@ -6,8 +6,6 @@ if (not status) then
     return
 end
 
-print "colorscheme.cnf"
-
 theme.setup({
   options = {
     -- Compiled file's destination location
@@ -44,5 +42,39 @@ theme.setup({
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme carbonfox")
+
+local function ColorMyNvim(scheme)
+    scheme = scheme or "carbonfox"
+    vim.cmd.colorscheme(scheme)
+end
+
+function LightScheme()
+   ColorMyNvim("dayfox")
+end
+
+function DarkScheme()
+    ColorMyNvim()
+end
+
+local function InitColor()
+    local hour = os.date("%H")
+    local h = tonumber(hour, 10)
+
+    if (h < 9 or h > 19) then
+       DarkScheme()
+       return
+    end
+
+    LightScheme()
+end
+
+--[[
+vim.api.nvim_create_user_command(
+    'N5_DarkScheme',
+    DarkScheme,
+    { bang = true, desc = "Switch to the DarkScheme" }
+)
+]]--
+
+InitColor()
 

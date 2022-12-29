@@ -4,7 +4,6 @@ if (not status) then
     print "Treesitter not available"
     return
 end
-print "Treesitter.cnf"
 
 require("nvim-treesitter.configs").setup {
     ensure_installed = { 
