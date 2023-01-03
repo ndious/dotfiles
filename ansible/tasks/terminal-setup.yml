@@ -7,6 +7,15 @@
     - install
     - terminal
 
+- name: Install fish shell
+  become: true
+  apt: 
+    name: [ "fish" ]
+  tags:
+    - install
+    - terminal
+    - fish
+
 - name: Install zsh packages
   become: true
   apt:
