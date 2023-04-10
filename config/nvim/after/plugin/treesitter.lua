@@ -5,8 +5,8 @@ if (not status) then
     return
 end
 
-require("nvim-treesitter.configs").setup {
-    ensure_installed = { 
+treesitter.setup {
+    ensure_installed = {
         -- "lua", 
         "rust",
         "css",

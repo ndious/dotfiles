@@ -68,13 +68,13 @@ local function InitColor()
     LightScheme()
 end
 
---[[
-vim.api.nvim_create_user_command(
-    'N5_DarkScheme',
-    DarkScheme,
-    { bang = true, desc = "Switch to the DarkScheme" }
-)
-]]--
+vim.api.nvim_create_user_command('N5DarkScheme', function()
+    DarkScheme()
+end, {})
+
+vim.api.nvim_create_user_command('N5LightScheme', function()
+    LightScheme()
+end, {})
 
 InitColor()
 

@@ -1,3 +1,19 @@
+local status, builtin = pcall(require, "telescope.builtin")
+
+if (not status) then
+    print "Telescope Error"
+    return
+end
+
+vim.keymap.set('n', '<leader>tf', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>tg', function ()
+    builtin.grep_string({ search = vim.fn.input("Grep >") })
+end)
+
+
+
+--[[
 local status, telescope = pcall(require, "telescope")
 if (not status) then
     print "Error Telescope"
@@ -33,6 +49,7 @@ telescope.setup({
 		},
 	},
 })
+]]--
 
 -- require("telescope").load_extension("git_worktree")
 -- telescope.load_extension("fzy_native")

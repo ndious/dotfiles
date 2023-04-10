@@ -25,7 +25,7 @@ return packer.startup(function(use)
     -- use({
         -- "nvim-lualine/lualine.nvim",
     -- })
-    
+
     -- [SECTION] Lsp
     use {
       'VonHeikemen/lsp-zero.nvim',
@@ -52,6 +52,14 @@ return packer.startup(function(use)
     -- [SECTION] Super-powers
     use("ThePrimeagen/harpoon")
     use("mbbill/undotree")
+    use {
+      'phaazon/mind.nvim',
+      branch = 'v2.2',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = function()
+        require'mind'.setup()
+      end
+    }
 
     -- [SECTION] Colorscheme section
     -- use {'srcery-colors/srcery-vim', as = 'srcery'}
@@ -59,19 +67,31 @@ return packer.startup(function(use)
     use "EdenEast/nightfox.nvim"
 
     -- [SECTION] Colors
-    use 'tjdevries/colorbuddy.vim'
-    use 'rktjmp/lush.nvim'
+    -- use 'tjdevries/colorbuddy.vim'
+    -- use 'rktjmp/lush.nvim'
 
     -- [SECTION] TreeSitter
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
     })
 
-    -- use("nvim-treesitter/playground")
-    -- use("romgrk/nvim-treesitter-context")
+    use("nvim-treesitter/playground")
+    use("romgrk/nvim-treesitter-context")
 
-    -- use("mfussenegger/nvim-dap")
-    -- use("rcarriga/nvim-dap-ui")
-    -- use("theHamsta/nvim-dap-virtual-text")
+    use("mfussenegger/nvim-dap")
+    use("rcarriga/nvim-dap-ui")
+    use("theHamsta/nvim-dap-virtual-text")
+
+    use {
+        "ahmedkhalf/jupyter-nvim",
+        run = ":UpdateRemotePlugins",
+        config = function()
+            require("jupyter-nvim").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 
 end)
