@@ -5,4 +5,4 @@ zsh_ohmy_custom_plugins:
   - name: "fzf-tab-completion"
     repo: "https://github.com/lincheney/fzf-tab-completion.git"
 
-nvim_version: 0.8
+nvim_version: 0.9
