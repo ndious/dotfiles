@@ -1,9 +1,0 @@
----
-
-todo: @TODO test as string1
-
-tod:
-  - desc: this is a description
-    loc: config/nvim/test.yml:5
-  - desc: Ok ok ok
-    loc: config/nvim/lua/tod/init.lua:19
