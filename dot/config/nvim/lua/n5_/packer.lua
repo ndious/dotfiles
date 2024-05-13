@@ -27,6 +27,7 @@ return packer.startup(function(use)
     -- })
 
     -- [SECTION] Lsp
+    use("folke/neodev.nvim")
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
@@ -60,6 +61,7 @@ return packer.startup(function(use)
         require'mind'.setup()
       end
     }
+    use 'Exafunction/codeium.vim'
     use {
       'alexghergh/nvim-tmux-navigation',
       config = function()
@@ -92,6 +94,7 @@ return packer.startup(function(use)
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
     })
+    use("nvim-treesitter/nvim-treesitter-angular")
 
     use("nvim-treesitter/playground")
     use("romgrk/nvim-treesitter-context")

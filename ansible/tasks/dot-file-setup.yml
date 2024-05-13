@@ -1,0 +1,8 @@
+- name: Create symbolic link
+  become: true
+  file:
+    src: ""
+    dest: ""
+    state: link
+  tags:
+    - initialise

@@ -1,9 +1,14 @@
 local status, lsp = pcall(require, 'lsp-zero')
 local status_cmp, cmp = pcall(require, 'cmp')
+local status_ndev, ndev = pcall(require, 'neodev')
 
 if (not status or not status_cmp) then
     print 'lsp-plugin is missing please run :PackerSync'
     return
+end
+
+if (status_ndev) then
+    ndev.setup({})
 end
 
 lsp.preset("recommended")
@@ -11,21 +16,21 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'tsserver',
     'eslint',
-    'sumneko_lua',
     'cssls',
     'rust_analyzer',
     'gopls',
 })
 
-lsp.configure('sumneko_lua', {
+lsp.configure('lua-language-server', {
     settings = {
-        Lua = {
+        lua = {
             diagnostics = {
                 globals = { 'vim' }
             }
         }
     }
 })
+
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mapping = lsp.defaults.cmp_mappings({

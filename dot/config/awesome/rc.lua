@@ -22,6 +22,13 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- widgets
+local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+local cmus_widget = require("awesome-wm-widgets.cmus-widget.cmus")
+local docker_widget = require("awesome-wm-widgets.docker-widget.docker")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -52,8 +59,8 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacrity"
-editor = "nvim"
+terminal = "x-terminal-emulator"
+editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -228,6 +235,14 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            cmus_widget{
+                space = 5,
+
+            },
+            docker_widget(),
+            volume_widget(),
+            cpu_widget(),
+            ram_widget(),
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -329,7 +344,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.util.spawn("rofi -show run") end,
+    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -459,9 +474,26 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 -- }}}
 
+-- JetBrains fix
+clientbuttons_jetbrains = gears.table.join(
+    awful.button({ modkey }, 1, awful.mouse.client.move),
+    awful.button({ modkey }, 3, awful.mouse.client.resize)
+)
+
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
+    {
+        rule = {
+            class = "jetbrains-.*",
+        }, properties = { focus = true, buttons = clientbuttons_jetbrains }
+    },
+    {
+        rule = {
+            class = "jetbrains-.*",
+            name = "win.*"
+        }, properties = { titlebars_enabled = false, focusable = false, focus = true, floating = true, placement = awful.placement.restore }
+    },
     -- All clients will match this rule.
     { rule = { },
       properties = { border_width = beautiful.border_width,
@@ -570,6 +602,8 @@ client.connect_signal("request::titlebars", function(c)
         },
         layout = wibox.layout.align.horizontal
     }
+
+    awful.titlebar.hide(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -580,3 +614,4 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+--

@@ -1,1 +1,4 @@
-require "n5_"
+vim.o.termguicolors = true
+
+require "dious"
+

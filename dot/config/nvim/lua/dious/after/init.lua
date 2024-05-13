@@ -1,0 +1,7 @@
+require "dious.after.theme"
+require "dious.after.telescope"
+require "dious.after.treesitter"
+require "dious.after.lualine"
+require "dious.after.lsp"
+require "dious.after.ibl"
+require "dious.after.harpoon"
