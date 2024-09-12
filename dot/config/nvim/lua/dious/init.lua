@@ -13,7 +13,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require "dious.config"
+require "config"
 
 require("lazy").setup("dious.plugins")
 
