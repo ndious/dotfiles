@@ -1,9 +1,6 @@
 return {
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            "mason.nvim",
-            { "williamboman/mason-lspconfig.nvim", config = function() end },
-        },
-    }
+    "neovim/nvim-lspconfig",
+    dependencies = {
+        "williamboman/mason.nvim",
+    },
 }

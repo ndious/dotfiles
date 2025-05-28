@@ -11,8 +11,35 @@ end)
 
 lsp_zero.preset("recommended")
 
-require("neodev").setup {}
-require("mason").setup {}
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<Tab>'] = cmp.mapping.confirm({select = true}),
+    }),
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+        { name = 'path' },
+    },
+    formatting = {
+        fields = { "abbr", "kind", "menu" },
+        expandable_indicator = true,
+
+        format = lspkind.cmp_format({
+            mode = "symbol_text",
+            maxwidth = 50,
+            ellipsis_char = '...',
+            symbol_map = { nvim_lsp = "", }
+        })
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+})
+
+require("neodev").setup({})
+require("mason").setup({})
 require("mason-lspconfig").setup {
     ensure_installed = {
         "tsserver",
