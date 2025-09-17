@@ -1,4 +1,4 @@
 vim.o.termguicolors = true
 
-require "next"
+require "n5_"
 

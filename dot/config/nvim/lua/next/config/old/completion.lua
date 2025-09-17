@@ -1,7 +1,6 @@
 local lspkind = require "lspkind"
 lspkind.init {}
 
-local lsp_zero = require "lsp-zero"
 local lsp = require "lspconfig"
 
 local cmp = require "cmp"
@@ -12,7 +11,6 @@ lsp_zero.on_attach(function(_, bufnr)
     lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
-lsp_zero.preset("recommended")
 
 cmp.setup {
     sources = {
@@ -43,19 +41,8 @@ cmp.setup {
 require("mason").setup({})
 require("mason-lspconfig").setup {
     ensure_installed = {
-        "tsserver",
-        "cssls",
-        "rust_analyzer",
-        "gopls",
-        "lua_ls",
-        "pyright",
-        "yamlls",
-        "jsonls",
-    },
-
-    handlers = {
-        lsp_zero.default_setup,
-    },
+        "lua_ls"
+    }
 }
 
 -- luasnip

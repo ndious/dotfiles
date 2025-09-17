@@ -1,3 +1,2 @@
-require "n5_.packer"
-require "n5_.set"
-require "n5_.mapping"
+require "n5_.lazy"
+require "config"
