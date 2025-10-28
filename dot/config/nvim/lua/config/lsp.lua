@@ -1,8 +1,12 @@
+-- LSP config examples
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 vim.lsp.enable({
     'gopls',
-    'templ',
     'lua_ls',
     'pyright',
+    'tailwindcss_ls',
+    'templ',
+    'vscode_html_ls',
 })
 
 vim.diagnostic.config({
