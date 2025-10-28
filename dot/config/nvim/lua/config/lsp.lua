@@ -1,5 +1,6 @@
 vim.lsp.enable({
     'gopls',
+    'templ',
     'lua_ls',
     'pyright',
 })
